@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="arquivo.css">
+<title>tigrinho</title>
+<style>
+body{
+position:relative;
+background-image:url('tigre.png');
+background-repeat:no-repeat;
+background-attachment:fixed;
+background-size:cover;
+
+}
+#flex{
+display:flex;
+flex-wrap:wrap;
+justify-content: space-evenly;
+}
+
+#mesa{
+display:block;
+
+--prog1:0;
+  width: 150px;
+  height: 150px;
+border-radius:50%;
+background: conic-gradient(gold calc(var(--prog1) * 1%),#ddd 0);
+}
+#m{
+padding-top:50px;
+display:block;
+text-align:center;
+margin:auto;
+}
+
+#mesa2{
+
+display:block;
+text-align:center;
+margin:auto;
+
+--prog2:0;
+  width: 150px;
+  height: 150px;
+border-radius:50%;
+background: conic-gradient(gold calc(var(--prog2) * 1%),#ddd 0);
+}
+#m2{
+padding-top:50px;
+display:block;
+text-align:center;
+margin:auto;
+}
+
+
+#mesa3{
+display:block;
+text-align:center;
+margin:auto;
+
+--prog3:0;
+  width: 150px;
+  height: 150px;
+border-radius:50%;
+background: conic-gradient(gold calc(var(--prog3) * 1%),#ddd 0);
+}
+#m3{
+padding-top:50px;
+display:block;
+text-align:center;
+margin:auto;
+}
+</style>
+</head>
+<body>
+<p id='saldo'>acertos:0</p>
+<div id='flex'>
+<main id='s1'>
+<div id='mesa'>
+<h1 id='m'>1</h1>
+</div>
+digite um numero:<br><input type='number' id='n1'min='0'max='100' required><br>
+</main>
+
+<main id='s2'>
+<div id='mesa2'>
+<h1 id='m2'>2</h1>
+</div>
+digite um numero:<br><input type='number'min='0'max='100'  id='n2' required><br>
+</main>
+
+<main id='s3'>
+<div id='mesa3'>
+<h1 id='m3'>3</h1>
+</div>
+digite um numero:<br><input type='number'min='0'max='100'  id='n3' required><br>
+</main>
+</div>
+<input value='enviar'id='bt'style='background-color:gold;' type='button'onclick='enviar()'>
+
+<script>
+var sd=document.getElementById('saldo')
+var flx=document.getElementById('flex')
+var bt=document.getElementById('bt')
+var sort1=Math.floor(Math.random()*101)
+var sort2=Math.floor(Math.random()*101)
+var sort3=Math.floor(Math.random()*101)
+var  cont1=0
+var  cont2=0
+var  cont3=0
+var set=null
+//valores digitados
+var n1=document.getElementById('n1')
+var n2=document.getElementById('n2')
+var n3=document.getElementById('n3')
+var m1=document.getElementById('mesa')
+var mm1=document.getElementById('m')
+var m2=document.getElementById('mesa2')
+var mm2=document.getElementById('m2')
+var m3=document.getElementById('mesa3')
+var mm3=document.getElementById('m3')
+function sett(){
+if(cont1!=sort1){
+bt.disabled=true
+cont1+=1
+m1.style.setProperty('--prog1',cont1)
+m1.style.color='white'
+mm1.innerHTML=cont1
+}
+if(cont1==sort1){
+bt.disabled=false
+cont1=0
+sort1=0
+
+}
+if(cont2!=sort2){
+bt.disabled=true
+cont2+=1
+m2.style.setProperty('--prog2',cont2)
+m2.style.color='white'
+mm2.innerHTML=cont2
+}
+if(cont2==sort2){
+bt.disabled=false
+cont2=0
+sort2=0
+
+}
+if(cont3!=sort3){
+bt.disabled=true
+cont3+=1
+m3.style.setProperty('--prog3',cont3)
+m3.style.color='white'
+mm3.innerHTML=cont3
+}
+if(cont3==sort3){
+bt.disabled=false
+cont3=0
+sort3=0
+}
+
+}
+function enviar(){
+clearInterval(set)
+n1=document.getElementById('n1')
+n2=document.getElementById('n2')
+n3=document.getElementById('n3')
+n1=Number(n1.value)
+n2=Number(n2.value)
+n3=Number(n3.value)
+sort1=Math.floor(Math.random()*1)
+sort2=Math.floor(Math.random()*101)
+sort3=Math.floor(Math.random()*101)
+if(n1==sort1||n2==sort2||n3==sort3){
+alert('houve um erro na plataforma tente novamente mais tarde')
+flx.innerHTML=`<img src='stop.png'>`
+}else{
+if(n1.value.length>0 && n2.value.length>0 && n2.value.length>0){
+set=setInterval(sett,50)
+}
+}
+}
+</script>
+</body>
+</html>
