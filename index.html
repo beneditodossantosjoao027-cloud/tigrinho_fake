@@ -8,7 +8,7 @@
 <style>
 body{
 position:relative;
-background-image:url('tigre.png');
+background-image:url('tigre.PNG');
 background-repeat:no-repeat;
 background-attachment:fixed;
 background-size:cover;
@@ -168,21 +168,22 @@ clearInterval(set)
 n1=document.getElementById('n1')
 n2=document.getElementById('n2')
 n3=document.getElementById('n3')
+if(n1.value.length>0 && n2.value.length>0 && n3.value.length>0){
 n1=Number(n1.value)
 n2=Number(n2.value)
 n3=Number(n3.value)
+
 sort1=Math.floor(Math.random()*1)
 sort2=Math.floor(Math.random()*101)
 sort3=Math.floor(Math.random()*101)
 if(n1==sort1||n2==sort2||n3==sort3){
 alert('houve um erro na plataforma tente novamente mais tarde')
-flx.innerHTML=`<img src='stop.png'>`
-}else{
-if(n1.value.length>0 && n2.value.length>0 && n2.value.length>0){
+flx.innerHTML=`<img src='stop.PNG'>`
+}
+else{
 set=setInterval(sett,50)
 }
-}
-}
+}}
 </script>
 </body>
 </html>
